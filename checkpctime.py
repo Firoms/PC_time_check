@@ -9,7 +9,11 @@ class pctime:
 
     def check_time_start(self):
         self.start_time = datetime.datetime.now()
-        print(self.start_time)
+        db = sqlite3.connect("Pc_Time.db")
+        cursor = db.cursor()
+        insert_query = f'INSERT INTO Pc_Time VALUES("","{self.start_time}", "", "")'
+        cursor.execute(insert_query)
+        db.commit()
         self.update_time()
 
     def update_time(self):

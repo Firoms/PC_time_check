@@ -326,7 +326,7 @@ class Gui:
             li4 = Get_label.image_label_text(
                 self,
                 "li2-1.png",
-                482,
+                552,
                 203 + (40 * i),
                 f"{self.list[i+30][2]}",
                 "#472f91",

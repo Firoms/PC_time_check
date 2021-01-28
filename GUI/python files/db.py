@@ -3,7 +3,7 @@ import datetime
 
 
 def check_seq_list():
-    db = sqlite3.connect(f"../Pc_Time.db", check_same_thread=False)
+    db = sqlite3.connect(f"../../../Database/Pc_Time.db", check_same_thread=False)
     cursor = db.cursor()
     cursor.execute(f"SELECT COUNT(*) FROM Pc_Time")
     count = cursor.fetchone()[0]
@@ -11,7 +11,7 @@ def check_seq_list():
 
 
 def get_list(sort, desc):
-    db = sqlite3.connect(f"../Pc_Time.db", check_same_thread=False)
+    db = sqlite3.connect(f"../../../Database/Pc_Time.db", check_same_thread=False)
     cursor = db.cursor()
     cursor.execute(f"SELECT COUNT(*) FROM Pc_Time")
     count_lists = cursor.fetchone()[0]
@@ -28,7 +28,7 @@ def get_list(sort, desc):
 
 
 def get_recent_data():
-    db = sqlite3.connect(f"../Pc_Time.db", check_same_thread=False)
+    db = sqlite3.connect(f"../../../Database/Pc_Time.db", check_same_thread=False)
     cursor = db.cursor()
     cursor.execute(f"SELECT * FROM Pc_Time ORDER BY Seq DESC")
     return cursor.fetchone()
@@ -42,7 +42,7 @@ def cal_week():
     to4 = str(datetime.datetime.now() - datetime.timedelta(days=4))[:10]
     to5 = str(datetime.datetime.now() - datetime.timedelta(days=5))[:10]
     to6 = str(datetime.datetime.now() - datetime.timedelta(days=6))[:10]
-    db = sqlite3.connect(f"../Pc_Time.db", check_same_thread=False)
+    db = sqlite3.connect(f"../../../Database/Pc_Time.db", check_same_thread=False)
     cursor = db.cursor()
     cursor.execute(
         f"SELECT Use_time FROM Pc_Time Where Start_time like '{to}%' OR Start_time like '{to1}%' OR Start_time like '{to2}%' OR Start_time like '{to3}%' OR Start_time like  '{to4}%' OR Start_time like '{to5}%' OR Start_time like '{to6}%'"

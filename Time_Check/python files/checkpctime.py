@@ -6,7 +6,7 @@ import datetime
 class pctime:
     def __init__(self):
         self.db = sqlite3.connect(
-            "C:/코딩/컴퓨터_사용시간_프로그램/Pc_Time.db", check_same_thread=False
+            "C:/코딩/Pc_time_check/Database/Pc_Time.db", check_same_thread=False
         )
         self.cursor = self.db.cursor()
         self.check_time_start()

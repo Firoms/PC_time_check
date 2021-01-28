@@ -7,17 +7,19 @@ import tkinter.messagebox
 import pyglet
 from Make_label import Get_label
 from db import *
+import os
 
+img_path = os.path.join(os.getcwd())
 
 class Gui:
     def __init__(self):
         self.screen = Tk()
-        self.screen.iconbitmap("logo.ico")
+        self.screen.iconbitmap("../../images/logo.ico")
         self.screen.title("컴퓨터 사용시간 프로그램")
         self.screen.geometry("805x805")
         self.screen.resizable(width=False, height=False)
-        pyglet.font.add_file("GodoM.otf")
-        pyglet.font.add_file("HoonDdukbokki.ttf")
+        pyglet.font.add_file("../../font/GodoM.otf")
+        pyglet.font.add_file("../../font/HoonDdukbokki.ttf")
         self.sort_color = 0
         self.sort_num = 0
         self.main_screen()
@@ -25,16 +27,16 @@ class Gui:
 
     def main_screen(self):
         self.destroy()
-        Main_Screen_background = Get_label.image_label(self, "main_bg.png", 0, 0)
+        Main_Screen_background = Get_label.image_label(self, os.path.join(img_path, "../../images/main_bg.png"), 0, 0)
         refresh_button = Get_label.image_button(
-            self, "refresh.png", 660, 50, self.main_screen
+            self, os.path.join(img_path, "../../images/refresh.png"), 660, 50, self.main_screen
         )
-        User_button = Get_label.image_button(self, "btn_1.png", 28, 290, self.reload)
-        Exit_button = Get_label.image_button(self, "btn_2.png", 415, 290, self._quit)
+        User_button = Get_label.image_button(self, os.path.join(img_path, "../../images/btn_1.png"), 28, 290, self.reload)
+        Exit_button = Get_label.image_button(self, os.path.join(img_path, "../../images/btn_2.png"), 415, 290, self._quit)
         now_data = get_recent_data()
         Data_1 = Get_label.image_label_text(
             self,
-            "Data.png",
+            os.path.join(img_path, "../../images/Data.png"),
             31,
             390,
             f"현재 PC 이용 시간은 \n\n {now_data[3]} \n\n (시간:분:초) 입니다",
@@ -44,7 +46,7 @@ class Gui:
         week_data = cal_week()
         Data_2 = Get_label.image_label_text(
             self,
-            "Data.png",
+            os.path.join(img_path, "../../images/Data.png"),
             421,
             390,
             f"이번주 컴퓨터 이용횟수는 \n\n {week_data}번 입니다.",
@@ -66,25 +68,25 @@ class Gui:
 
     def list_screen1(self):
         self.destroy()
-        List_Screen_background = Get_label.image_label(self, "list_bg.png", 0, 0)
+        List_Screen_background = Get_label.image_label(self, os.path.join(img_path, "../../images/list_bg.png"), 0, 0)
         return_button = Get_label.image_button(
-            self, "return.png", 580, 30, self.main_screen
+            self, os.path.join(img_path, "../../images/return.png"), 580, 30, self.main_screen
         )
-        left_button = Get_label.image_button(self, "left.png", 300, 40, self.no_action)
+        left_button = Get_label.image_button(self, os.path.join(img_path, "../../images/left.png"), 300, 40, self.no_action)
         right_button = Get_label.image_button(
-            self, "right.png", 400, 40, self.list_screen2
+            self, os.path.join(img_path, "../../images/right.png"), 400, 40, self.list_screen2
         )
         left_button.config(state="disabled")
         right_button.config(state="disabled")
         self.Intro1 = Get_label.image_button_text(
-            self, "li1.png", 12, 163, self.no_action, f"", "#472f91", ("고도 M", 12)
+            self, os.path.join(img_path, "../../images/li1.png"), 12, 163, self.no_action, f"", "#472f91", ("고도 M", 12)
         )
         self.Intro2 = Get_label.image_button_text(
-            self, "li2.png", 62, 163, self.sort1, f"시작 날짜 & 시간", "#472f91", ("고도 M", 12)
+            self, os.path.join(img_path, "../../images/li2.png"), 62, 163, self.sort1, f"시작 날짜 & 시간", "#472f91", ("고도 M", 12)
         )
         self.Intro3 = Get_label.image_button_text(
             self,
-            "li2.png",
+            os.path.join(img_path, "../../images/li2.png"),
             307,
             163,
             self.sort2,
@@ -94,7 +96,7 @@ class Gui:
         )
         self.Intro4 = Get_label.image_button_text(
             self,
-            "li2.png",
+            os.path.join(img_path, "../../images/li2.png"),
             552,
             163,
             self.sort3,
@@ -119,11 +121,11 @@ class Gui:
             length1 = length
         for i in range(length1):
             li1 = Get_label.image_label_text(
-                self, "li1-1.png", 12, 203 + (40 * i), f"{i+1}", "#472f91", ("고도 M", 12)
+                self, os.path.join(img_path, "../../images/li1-1.png"), 12, 203 + (40 * i), f"{i+1}", "#472f91", ("고도 M", 12)
             )
             li2 = Get_label.image_label_text(
                 self,
-                "li2-1.png",
+                os.path.join(img_path, "../../images/li2-1.png"),
                 62,
                 203 + (40 * i),
                 f"{self.list[i][0]}",
@@ -132,7 +134,7 @@ class Gui:
             )
             li3 = Get_label.image_label_text(
                 self,
-                "li2-1.png",
+                os.path.join(img_path, "../../images/li2-1.png"),
                 307,
                 203 + (40 * i),
                 f"{self.list[i][1]}",
@@ -141,7 +143,7 @@ class Gui:
             )
             li4 = Get_label.image_label_text(
                 self,
-                "li2-1.png",
+                os.path.join(img_path, "../../images/li2-1.png"),
                 552,
                 203 + (40 * i),
                 f"{self.list[i][2]}",
@@ -151,26 +153,26 @@ class Gui:
 
     def list_screen2(self):
         self.destroy()
-        List_Screen_background = Get_label.image_label(self, "list_bg.png", 0, 0)
+        List_Screen_background = Get_label.image_label(self, os.path.join(img_path, "../../images/list_bg.png"), 0, 0)
         return_button = Get_label.image_button(
-            self, "return.png", 580, 30, self.main_screen
+            self, os.path.join(img_path, "../../images/return.png"), 580, 30, self.main_screen
         )
         left_button = Get_label.image_button(
-            self, "left.png", 300, 40, self.list_screen1
+            self, os.path.join(img_path, "../../images/left.png"), 300, 40, self.list_screen1
         )
         right_button = Get_label.image_button(
-            self, "right.png", 400, 40, self.list_screen3
+            self, os.path.join(img_path, "../../images/right.png"), 400, 40, self.list_screen3
         )
         right_button.config(state="disabled")
         self.Intro1 = Get_label.image_button_text(
-            self, "li1.png", 12, 163, self.no_action, f"", "#472f91", ("고도 M", 12)
+            self, os.path.join(img_path, "../../images/li1.png"), 12, 163, self.no_action, f"", "#472f91", ("고도 M", 12)
         )
         self.Intro2 = Get_label.image_button_text(
-            self, "li2.png", 62, 163, self.sort1, f"시작 날짜 & 시간", "#472f91", ("고도 M", 12)
+            self, os.path.join(img_path, "../../images/li2.png"), 62, 163, self.sort1, f"시작 날짜 & 시간", "#472f91", ("고도 M", 12)
         )
         self.Intro3 = Get_label.image_button_text(
             self,
-            "li2.png",
+            os.path.join(img_path, "../../images/li2.png"),
             307,
             163,
             self.sort2,
@@ -180,7 +182,7 @@ class Gui:
         )
         self.Intro4 = Get_label.image_button_text(
             self,
-            "li2.png",
+            os.path.join(img_path, "../../images/li2.png"),
             552,
             163,
             self.sort3,
@@ -206,7 +208,7 @@ class Gui:
         for i in range(length1):
             li1 = Get_label.image_label_text(
                 self,
-                "li1-1.png",
+                os.path.join(img_path, "../../images/li1-1.png"),
                 12,
                 203 + (40 * i),
                 f"{i+16}",
@@ -215,7 +217,7 @@ class Gui:
             )
             li2 = Get_label.image_label_text(
                 self,
-                "li2-1.png",
+                os.path.join(img_path, "../../images/li2-1.png"),
                 62,
                 203 + (40 * i),
                 f"{self.list[i+15][0]}",
@@ -224,7 +226,7 @@ class Gui:
             )
             li3 = Get_label.image_label_text(
                 self,
-                "li2-1.png",
+                os.path.join(img_path, "../../images/li2-1.png"),
                 307,
                 203 + (40 * i),
                 f"{self.list[i+15][1]}",
@@ -233,7 +235,7 @@ class Gui:
             )
             li4 = Get_label.image_label_text(
                 self,
-                "li2-1.png",
+                os.path.join(img_path, "../../images/li2-1.png"),
                 552,
                 203 + (40 * i),
                 f"{self.list[i+15][2]}",
@@ -243,26 +245,26 @@ class Gui:
 
     def list_screen3(self):
         self.destroy()
-        List_Screen_background = Get_label.image_label(self, "list_bg.png", 0, 0)
+        List_Screen_background = Get_label.image_label(self, os.path.join(img_path, "../../images/list_bg.png"), 0, 0)
         return_button = Get_label.image_button(
-            self, "return.png", 580, 30, self.main_screen
+            self, os.path.join(img_path, "../../images/return.png"), 580, 30, self.main_screen
         )
         left_button = Get_label.image_button(
-            self, "left.png", 300, 40, self.list_screen2
+            self, os.path.join(img_path, "../../images/left.png"), 300, 40, self.list_screen2
         )
         right_button = Get_label.image_button(
-            self, "right.png", 400, 40, self.no_action
+            self, os.path.join(img_path, "../../images/right.png"), 400, 40, self.no_action
         )
         right_button.config(state="disabled")
         self.Intro1 = Get_label.image_button_text(
-            self, "li1.png", 12, 163, self.no_action, f"", "#472f91", ("고도 M", 12)
+            self, os.path.join(img_path, "../../images/li1.png"), 12, 163, self.no_action, f"", "#472f91", ("고도 M", 12)
         )
         self.Intro2 = Get_label.image_button_text(
-            self, "li2.png", 62, 163, self.sort1, f"시작 날짜 & 시간", "#472f91", ("고도 M", 12)
+            self, os.path.join(img_path, "../../images/li2.png"), 62, 163, self.sort1, f"시작 날짜 & 시간", "#472f91", ("고도 M", 12)
         )
         self.Intro3 = Get_label.image_button_text(
             self,
-            "li2.png",
+            os.path.join(img_path, "../../images/li2.png"),
             307,
             163,
             self.sort2,
@@ -272,7 +274,7 @@ class Gui:
         )
         self.Intro4 = Get_label.image_button_text(
             self,
-            "li2.png",
+            os.path.join(img_path, "../../images/li2.png"),
             552,
             163,
             self.sort3,
@@ -298,7 +300,7 @@ class Gui:
         for i in range(length1):
             li1 = Get_label.image_label_text(
                 self,
-                "li1-1.png",
+                os.path.join(img_path, "../../images/li1-1.png"),
                 12,
                 203 + (40 * i),
                 f"{i+31}",
@@ -307,7 +309,7 @@ class Gui:
             )
             li2 = Get_label.image_label_text(
                 self,
-                "li2-1.png",
+                os.path.join(img_path, "../../images/li2-1.png"),
                 62,
                 203 + (40 * i),
                 f"{self.list[i+30][0]}",
@@ -316,7 +318,7 @@ class Gui:
             )
             li3 = Get_label.image_label_text(
                 self,
-                "li2-1.png",
+                os.path.join(img_path, "../../images/li2-1.png"),
                 307,
                 203 + (40 * i),
                 f"{self.list[i+30][1]}",
@@ -325,7 +327,7 @@ class Gui:
             )
             li4 = Get_label.image_label_text(
                 self,
-                "li2-1.png",
+                os.path.join(img_path, "../../images/li2-1.png"),
                 552,
                 203 + (40 * i),
                 f"{self.list[i+30][2]}",

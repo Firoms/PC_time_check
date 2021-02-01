@@ -65,3 +65,6 @@ __C:\코딩\Pc_time_check__ 와 같이 디렉토리를 설정해주셔야 합니
     나름 괜찮은 방식과 아이디어로 프로젝트를 완료한 것 같습니다.
 ***
 ## 실행사진
+<img src="https://user-images.githubusercontent.com/63716450/106448834-a46f6c80-64c6-11eb-985e-dd6de855c1d7.PNG"  width="500" height="500">
+<img src="https://user-images.githubusercontent.com/63716450/106448842-a6d1c680-64c6-11eb-8ae9-e9d358fc4108.PNG"  width="500" height="500">
+<img src="https://user-images.githubusercontent.com/63716450/106448849-a89b8a00-64c6-11eb-9ae0-5f9fdbe6a6ee.PNG"  width="500" height="500">

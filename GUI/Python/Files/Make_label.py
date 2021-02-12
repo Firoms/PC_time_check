@@ -20,7 +20,8 @@ class Get_label:
         final_path = os.path.join(img_path, file_name)
         image = ImageTk.PhotoImage(file=final_path)
         image_label = Label(
-            self.screen, text=text, compound=tkinter.CENTER, fg=color, font=font)
+            self.screen, text=text, compound=tkinter.CENTER, fg=color, font=font
+        )
         image_label.configure(image=image)
         image_label.image = image
         image_label.configure(text=text)
@@ -31,8 +32,7 @@ class Get_label:
         img_path = os.path.join(os.getcwd(), "images")
         final_path = os.path.join(img_path, file_name)
         image = ImageTk.PhotoImage(file=final_path)
-        image_button = Button(
-            self.screen, overrelief=SOLID,  command=command)
+        image_button = Button(self.screen, overrelief=SOLID, command=command)
         image_button.configure(image=image)
         image_button.image = image
         image_button.place(x=x, y=y)
@@ -43,7 +43,15 @@ class Get_label:
         final_path = os.path.join(img_path, file_name)
         image = ImageTk.PhotoImage(file=final_path)
         image_button = Button(
-            self.screen, overrelief=SOLID,  command=command, text=text, compound=tkinter.CENTER, fg=color, font=font, justify=LEFT)
+            self.screen,
+            overrelief=SOLID,
+            command=command,
+            text=text,
+            compound=tkinter.CENTER,
+            fg=color,
+            font=font,
+            justify=LEFT,
+        )
         image_button.configure(image=image)
         image_button.image = image
         image_button.configure(text=text)
